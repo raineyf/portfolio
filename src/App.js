@@ -1,13 +1,13 @@
 import React from "react";
-import './App.scss';
+import "./App.scss";
 import Header from "./components/Header";
 
 function App() {
-  return (
-    <React.Fragment>
-      <Header />
-    </React.Fragment>
-  );
+	return (
+		<React.Fragment>
+			<Header />
+		</React.Fragment>
+	);
 }
 
 export default App;
