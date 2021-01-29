@@ -1,45 +1,46 @@
 @import "normalize.scss";
 
-$blue-regal: #004B6B;
+$blue-regal: #004b6b;
 $blue-hippie: #5b9bb7;
-
 
 $secondary-bg: $blue-regal;
 $primary-font: white;
 
-
 .page-container {
-  width: calc(100% - 40px);
-  margin: 0 auto;
+	width: calc(100% - 40px);
+	margin: 0 auto;
 }
 
 header {
-  background-color:$secondary-bg;
-  .page-container {
-    height: 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-    .logo-container {
-      height:100%;
-      img {
-        height:100%;
-      }
-    }
-    nav {
-      ul {
-        padding:0;
-        list-style-type: none;
-        display:flex;
-        li {
-          margin:0 10px;
-          color: $primary-font;
-          a {
-            color:inherit;
-            text-decoration:none;
-          }
-        }
-      }
-    }
-  }
+	background-color: $secondary-bg;
+	.page-container {
+		height: 60px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.logo-container {
+			height: 100%;
+			img {
+				height: 100%;
+			}
+		}
+		nav {
+			&.hidden {
+				display: none;
+			}
+			ul {
+				padding: 0;
+				list-style-type: none;
+				display: flex;
+				li {
+					margin: 0 10px;
+					color: $primary-font;
+					a {
+						color: inherit;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
 }
