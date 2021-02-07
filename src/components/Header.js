@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logo from "../images/RF_Blue-BG.svg";
 
 class Header extends React.Component {
@@ -35,10 +36,14 @@ class Header extends React.Component {
                     >
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <Link to="/about">About</Link>
+                            </li>
+
+                            <li>
+                                <Link to="/links">Links</Link>
                             </li>
                         </ul>
                     </nav>
