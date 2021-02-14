@@ -36,14 +36,20 @@ class Header extends React.Component {
                     >
                         <ul>
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/" onClick={this.handleClick}>
+                                    Home
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/about">About</Link>
+                                <Link to="/about" onClick={this.handleClick}>
+                                    About
+                                </Link>
                             </li>
 
                             <li>
-                                <Link to="/links">Links</Link>
+                                <Link to="/links" onClick={this.handleClick}>
+                                    Links
+                                </Link>
                             </li>
                         </ul>
                     </nav>

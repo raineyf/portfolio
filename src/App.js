@@ -5,22 +5,22 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Links from "./pages/Links";
+import Error from "./pages/Error";
 
 function App() {
     return (
         <Router>
             <Header />
-            <Switch>
-                <Route path="/about">
-                    <About />
-                </Route>
-                <Route path="/links">
-                    <Links />
-                </Route>
-                <Route path="/">
-                    <Home />
-                </Route>
-            </Switch>
+            <main>
+                <div className="page-container">
+                    <Switch>
+                        <Route path="/about" component={About} />
+                        <Route path="/links" component={Links} />
+                        <Route path="/" exact component={Home} />
+                        <Route component={Error} />
+                    </Switch>
+                </div>
+            </main>
         </Router>
     );
 }
