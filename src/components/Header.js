@@ -12,15 +12,23 @@ function Header() {
         }
     };
     return (
-        <header>
-            <div>
-                <div>
+        <header className="bg-blue h-16">
+            <div className="container flex justify-between">
+                <div className="h-16 w-16">
                     <img src={logo} alt="RF Logo" />
                 </div>
-                <button onClick={handleClick} aria-expanded={ariaExpanded}>
+                <button
+                    onClick={handleClick}
+                    aria-expanded={ariaExpanded}
+                    className="text-white"
+                >
                     Menu
                 </button>
-                <nav className={ariaExpanded == "false" ? "hidden" : ""}>
+                <nav
+                    className={
+                        ariaExpanded == "false" ? "hidden" : "text-white"
+                    }
+                >
                     <ul>
                         <li>
                             <Link to="/" onClick={handleClick}>
