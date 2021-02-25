@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.scss";
+import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -12,7 +12,7 @@ function App() {
         <Router>
             <Header />
             <main>
-                <div className="page-container">
+                <div>
                     <Switch>
                         <Route path="/about" component={About} />
                         <Route path="/links" component={Links} />

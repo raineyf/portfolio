@@ -13,9 +13,9 @@ function Header() {
     };
     return (
         <header>
-            <div className="page-container">
-                <div className="logo-container">
-                    <img src={logo} alt="RF Logo" className="logo" />
+            <div>
+                <div>
+                    <img src={logo} alt="RF Logo" />
                 </div>
                 <button onClick={handleClick} aria-expanded={ariaExpanded}>
                     Menu
