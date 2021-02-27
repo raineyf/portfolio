@@ -13,14 +13,14 @@ function Header() {
     };
     return (
         <header className="bg-blue h-16">
-            <div className="container flex justify-between">
+            <div className="max-w-5xl container flex items-center justify-between">
                 <div className="h-16 w-16">
                     <img src={logo} alt="RF Logo" />
                 </div>
                 <button
                     onClick={handleClick}
                     aria-expanded={ariaExpanded}
-                    className="text-white"
+                    className="bg-blue-light text-white h-12 w-24 rounded text-lg border-2 border-blue-light hover:border-white hover:text-xl"
                 >
                     Menu
                 </button>

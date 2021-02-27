@@ -11,13 +11,16 @@ module.exports = {
             blue: {
                 dark: "#004B6B",
                 DEFAULT: "#004B6B",
-                light: "5B9BB7",
+                light: "#5B9BB7",
             },
             white: "#fff",
         },
     },
     variants: {
-        extend: {},
+        extend: {
+            fontSize: ["hover"],
+            borderColor: ["hover"],
+        },
     },
     plugins: [],
 };
