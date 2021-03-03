@@ -11,8 +11,8 @@ function App() {
     return (
         <Router>
             <Header />
-            <main>
-                <div>
+            <main className="bg-gray text-white pt-16 min-h-screen">
+                <div className="max-w-5xl container py-12">
                     <Switch>
                         <Route path="/about" component={About} />
                         <Route path="/links" component={Links} />
