@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Links from "./pages/Links";
@@ -11,7 +12,7 @@ function App() {
     return (
         <Router>
             <Header />
-            <main className="bg-gray text-white pt-16 min-h-screen">
+            <main className="bg-gray text-white pt-16 min-h-screen font-merriweather">
                 <div className="max-w-5xl container py-12">
                     <Switch>
                         <Route path="/about" component={About} />
@@ -21,6 +22,7 @@ function App() {
                     </Switch>
                 </div>
             </main>
+            <Footer />
         </Router>
     );
 }
