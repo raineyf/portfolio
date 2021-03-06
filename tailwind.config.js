@@ -25,8 +25,7 @@ module.exports = {
     },
     variants: {
         extend: {
-            fontSize: ["hover"],
-            borderColor: ["hover"],
+            fontSize: ["hover", "focus"],
         },
     },
     plugins: [],
