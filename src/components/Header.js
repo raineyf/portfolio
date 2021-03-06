@@ -1,16 +1,63 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../images/RF_Blue-BG.svg";
 
 function Header() {
-    const [ariaExpanded, setAriaExpanded] = useState("false");
-    const handleClick = () => {
-        if (ariaExpanded == "false") {
-            setAriaExpanded("true");
+    const [navState, setNavState] = useState({
+        ariaExpanded: "false",
+        focusIndex: null,
+    });
+    useEffect(() => {
+        const headerNav = document.querySelector("#header-navigation");
+        const navLinks = headerNav.querySelectorAll("a");
+        if (navState.ariaExpanded === "true") {
+            if (navState.focusIndex != null) {
+                navLinks[navState.focusIndex].focus();
+            }
+        }
+    });
+    const displayMenu = (index) => {
+        setNavState({
+            ariaExpanded: "true",
+            focusIndex: index,
+        });
+    };
+    const hideMenu = () => {
+        setNavState({
+            ariaExpanded: "false",
+            focusIndex: null,
+        });
+    };
+    const toggleMenu = (index) => {
+        if (navState.ariaExpanded === "false") {
+            displayMenu(index);
         } else {
-            setAriaExpanded("false");
+            hideMenu();
         }
     };
+    const handleHover = () => {
+        displayMenu(null);
+    };
+    const handleClick = () => {
+        hideMenu();
+    };
+    const handleButtonKeyDown = (e) => {
+        const headerNav = document.querySelector("#header-navigation");
+        const navLinks = headerNav.querySelectorAll("a");
+        const navLength = navLinks.length;
+        const lastNavIndex = navLength - 1;
+        if (
+            e.code === "ArrowDown" ||
+            e.code === "Enter" ||
+            e.code === "Space"
+        ) {
+            e.preventDefault();
+            toggleMenu(0);
+        } else if (e.code === "ArrowUp") {
+            toggleMenu(lastNavIndex);
+        }
+    };
+    const handleLinkKeyDown = (e) => {};
     return (
         <header className="bg-blue border-b border-white fixed w-full font-montserrat">
             <div className="max-w-5xl container flex items-center justify-between h-16 relative">
@@ -18,44 +65,62 @@ function Header() {
                     <img src={logo} alt="RF Logo" />
                 </div>
                 <button
+                    onMouseEnter={handleHover}
                     onClick={handleClick}
-                    aria-expanded={ariaExpanded}
-                    className="bg-blue-light text-white h-12 w-24 rounded text-lg border-2 border-blue-light uppercase hover:border-white hover:text-xl"
+                    onKeyDown={handleButtonKeyDown}
+                    aria-expanded={navState.ariaExpanded}
+                    aria-haspopup="true"
+                    aria-controls="header-navigation"
+                    id="menu-button"
+                    className="bg-blue-light text-white h-12 w-24 rounded text-lg border-2 border-blue-light uppercase hover:border-white hover:text-xl focus:border-white focus:text-xl"
                 >
                     Menu
                 </button>
                 <nav
                     className={
-                        ariaExpanded == "false"
+                        navState.ariaExpanded === "false"
                             ? "hidden"
                             : "text-white absolute right-0 top-16 w-60 max-w-full"
                     }
                 >
-                    <ul>
-                        <li>
+                    <ul
+                        id="header-navigation"
+                        role="menu"
+                        aria-labelledby="menu-button"
+                    >
+                        <li role="none">
                             <Link
                                 to="/"
                                 onClick={handleClick}
-                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl"
+                                onKeyDown={handleLinkKeyDown}
+                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl focus:bg-blue focus:text-xl"
+                                tabIndex="-1"
+                                role="menuitem"
                             >
                                 Home
                             </Link>
                         </li>
-                        <li>
+                        <li role="none">
                             <Link
                                 to="/about"
                                 onClick={handleClick}
-                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl"
+                                onKeyDown={handleLinkKeyDown}
+                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl focus:bg-blue focus:text-xl"
+                                tabIndex="-1"
+                                role="menuitem"
                             >
                                 About
                             </Link>
                         </li>
 
-                        <li>
+                        <li role="none">
                             <Link
                                 to="/links"
                                 onClick={handleClick}
-                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl"
+                                onKeyDown={handleLinkKeyDown}
+                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl focus:bg-blue focus:text-xl"
+                                tabIndex="-1"
+                                role="menuitem"
                             >
                                 Links
                             </Link>

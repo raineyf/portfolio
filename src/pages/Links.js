@@ -8,17 +8,29 @@ function Links() {
             </h1>
             <ul className="px-8 text-lg leading-8">
                 <li>
-                    <a href="" target="_blank" rel="noreferrer">
+                    <a
+                        href="https://www.linuxmint.com/start/ulyssa/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         GitHub
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank" rel="noreferrer">
+                    <a
+                        href="https://www.linuxmint.com/start/ulyssa/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         CodePen
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank" rel="noreferrer">
+                    <a
+                        href="https://www.linuxmint.com/start/ulyssa/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         LinkedIn
                     </a>
                 </li>
