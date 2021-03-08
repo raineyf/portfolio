@@ -27,6 +27,7 @@ function Header() {
             ariaExpanded: "false",
             focusIndex: null,
         });
+        document.querySelector("#menu-button").focus();
     };
     const toggleMenu = (index) => {
         if (navState.ariaExpanded === "false") {
@@ -39,7 +40,7 @@ function Header() {
         displayMenu(null);
     };
     const handleClick = () => {
-        hideMenu();
+        toggleMenu();
     };
     const handleButtonKeyDown = (e) => {
         const headerNav = document.querySelector("#header-navigation");
@@ -57,7 +58,43 @@ function Header() {
             toggleMenu(lastNavIndex);
         }
     };
-    const handleLinkKeyDown = (e) => {};
+    const handleLinkKeyDown = (e) => {
+        const headerNav = document.querySelector("#header-navigation");
+        const navLinks = headerNav.querySelectorAll("a");
+        const navLinksArr = () => {
+            let array = [];
+            navLinks.forEach((l) => {
+                array.push(l);
+            });
+            return array;
+        };
+        const navLength = navLinks.length;
+        const lastNavIndex = navLength - 1;
+        const target = e.target;
+        const targetIndex = navLinksArr().indexOf(target);
+        if (e.code === "ArrowDown") {
+            e.preventDefault();
+            if (targetIndex === lastNavIndex) {
+                navLinks[0].focus();
+            } else {
+                const nextIndex = targetIndex + 1;
+                navLinks[nextIndex].focus();
+            }
+        } else if (e.code === "ArrowUp") {
+            e.preventDefault();
+            if (targetIndex === 0) {
+                navLinks[lastNavIndex].focus();
+            } else {
+                const prevIndex = targetIndex - 1;
+                navLinks[prevIndex].focus();
+            }
+        } else if (e.code === "Tab") {
+            hideMenu();
+        } else if (e.code === "Escape") {
+            e.preventDefault();
+            hideMenu();
+        }
+    };
     return (
         <header className="bg-blue border-b border-white fixed w-full font-montserrat">
             <div className="max-w-5xl container flex items-center justify-between h-16 relative">
@@ -70,6 +107,7 @@ function Header() {
                     onKeyDown={handleButtonKeyDown}
                     aria-expanded={navState.ariaExpanded}
                     aria-haspopup="true"
+                    tabIndex={navState.ariaExpanded === "true" ? "-1" : "0"}
                     aria-controls="header-navigation"
                     id="menu-button"
                     className="bg-blue-light text-white h-12 w-24 rounded text-lg border-2 border-blue-light uppercase hover:border-white hover:text-xl focus:border-white focus:text-xl"
