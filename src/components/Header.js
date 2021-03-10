@@ -5,13 +5,13 @@ import logo from "../images/RF_Blue-BG.svg";
 function Header() {
     const [navState, setNavState] = useState({
         ariaExpanded: "false",
-        focusIndex: null,
+        focusIndex: undefined,
     });
     useEffect(() => {
         const headerNav = document.querySelector("#header-navigation");
         const navLinks = headerNav.querySelectorAll("a");
         if (navState.ariaExpanded === "true") {
-            if (navState.focusIndex != null) {
+            if (navState.focusIndex != undefined) {
                 navLinks[navState.focusIndex].focus();
             }
         }
@@ -25,7 +25,7 @@ function Header() {
     const hideMenu = () => {
         setNavState({
             ariaExpanded: "false",
-            focusIndex: null,
+            focusIndex: undefined,
         });
         document.querySelector("#menu-button").focus();
     };
@@ -37,7 +37,7 @@ function Header() {
         }
     };
     const handleHover = () => {
-        displayMenu(null);
+        displayMenu();
     };
     const handleClick = () => {
         toggleMenu();
@@ -110,7 +110,7 @@ function Header() {
                     tabIndex={navState.ariaExpanded === "true" ? "-1" : "0"}
                     aria-controls="header-navigation"
                     id="menu-button"
-                    className="bg-blue-light text-white h-12 w-24 rounded text-lg border-2 border-blue-light uppercase hover:border-white hover:text-xl focus:border-white focus:text-xl"
+                    className="bg-blue-light text-white h-12 w-32 rounded text-3xl border-2 border-blue-light uppercase hover:border-white hover:text-4xl focus:border-white focus:text-4xl"
                 >
                     Menu
                 </button>
@@ -118,7 +118,7 @@ function Header() {
                     className={
                         navState.ariaExpanded === "false"
                             ? "hidden"
-                            : "text-white absolute right-0 top-16 w-60 max-w-full"
+                            : "text-white text-3xl absolute right-0 top-16 w-72 max-w-full"
                     }
                 >
                     <ul
@@ -131,7 +131,7 @@ function Header() {
                                 to="/"
                                 onClick={handleClick}
                                 onKeyDown={handleLinkKeyDown}
-                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl focus:bg-blue focus:text-xl"
+                                className="block flex justify-center items-center h-16 border border-white bg-blue-light hover:bg-blue hover:text-4xl focus:bg-blue focus:text-4xl"
                                 tabIndex="-1"
                                 role="menuitem"
                             >
@@ -143,7 +143,7 @@ function Header() {
                                 to="/about"
                                 onClick={handleClick}
                                 onKeyDown={handleLinkKeyDown}
-                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl focus:bg-blue focus:text-xl"
+                                className="block flex justify-center items-center h-16 border border-white bg-blue-light hover:bg-blue hover:text-4xl focus:bg-blue focus:text-4xl"
                                 tabIndex="-1"
                                 role="menuitem"
                             >
@@ -156,7 +156,7 @@ function Header() {
                                 to="/links"
                                 onClick={handleClick}
                                 onKeyDown={handleLinkKeyDown}
-                                className="block flex justify-center items-center h-12 border border-white bg-blue-light hover:bg-blue hover:text-xl focus:bg-blue focus:text-xl"
+                                className="block flex justify-center items-center h-16 border border-white bg-blue-light hover:bg-blue hover:text-4xl focus:bg-blue focus:text-4xl"
                                 tabIndex="-1"
                                 role="menuitem"
                             >
