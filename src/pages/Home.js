@@ -18,6 +18,19 @@ function Home() {
                     <Link to="/links" className="underline text-blue-lighter">
                         Links page
                     </Link>
+                    .<br />
+                    <br />
+                    This site is meant to be accessible. If you have any issues,
+                    or find an issue on behalf of someone else, please message
+                    me on{" "}
+                    <a
+                        href="https://www.linkedin.com/in/rainey-fleming/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue-lighter underline"
+                    >
+                        LinkedIn
+                    </a>
                     .
                 </p>
             </div>

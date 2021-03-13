@@ -7,33 +7,47 @@ function Links() {
                 More Links
             </h1>
             <div className="max-w-3xl mx-auto">
-                <ul className="px-8 text-lg leading-8">
-                    <li>
-                        <a
-                            href="https://www.linuxmint.com/start/ulyssa/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            GitHub
-                        </a>
+                <ul className="px-8 text-lg leading-8 list-disc">
+                    <li className="my-4">
+                        <p>
+                            {" "}
+                            <a
+                                href="https://github.com/raineyf"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-blue-lighter underline"
+                            >
+                                GitHub
+                            </a>
+                        </p>
                     </li>
-                    <li>
-                        <a
-                            href="https://www.linuxmint.com/start/ulyssa/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            CodePen
-                        </a>
+                    <li className="my-4">
+                        <p>
+                            {" "}
+                            <a
+                                href="https://www.linkedin.com/in/rainey-fleming/"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-blue-lighter underline"
+                            >
+                                LinkedIn
+                            </a>
+                        </p>
                     </li>
-                    <li>
-                        <a
-                            href="https://www.linuxmint.com/start/ulyssa/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            LinkedIn
-                        </a>
+                    <li className="my-4">
+                        <p>
+                            {" "}
+                            <a
+                                href="https://codepen.io/raineyf"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-blue-lighter underline"
+                            >
+                                CodePen
+                            </a>{" "}
+                            - I mostly use this for proof of concept, but you'll
+                            find some small code snippets
+                        </p>
                     </li>
                 </ul>
             </div>

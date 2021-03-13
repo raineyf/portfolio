@@ -11,7 +11,7 @@ function Header() {
         const headerNav = document.querySelector("#header-navigation");
         const navLinks = headerNav.querySelectorAll("a");
         if (navState.ariaExpanded === "true") {
-            if (navState.focusIndex != undefined) {
+            if (navState.focusIndex !== undefined) {
                 navLinks[navState.focusIndex].focus();
             }
         }
