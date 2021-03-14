@@ -12,7 +12,7 @@ function App() {
     return (
         <Router>
             <Header />
-            <main className="bg-gray text-white py-16 min-h-screen font-merriweather">
+            <main className="bg-black text-white py-16 min-h-screen font-merriweather">
                 <div className="max-w-5xl container py-12">
                     <Switch>
                         <Route path="/about" component={About} />

@@ -11,7 +11,7 @@ function Error() {
                 <p className="px-8 text-lg leading-8">
                     I'm not sure how you got here, but this page doesn't exist.
                     Want to go to the{" "}
-                    <Link to="/" className="underline text-blue-lighter">
+                    <Link to="/" className="underline text-blue">
                         Home page
                     </Link>
                     ?

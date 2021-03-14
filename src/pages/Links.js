@@ -15,7 +15,7 @@ function Links() {
                                 href="https://github.com/raineyf"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-blue-lighter underline"
+                                className="text-blue-light underline"
                             >
                                 GitHub
                             </a>
@@ -28,7 +28,7 @@ function Links() {
                                 href="https://www.linkedin.com/in/rainey-fleming/"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-blue-lighter underline"
+                                className="text-blue-light underline"
                             >
                                 LinkedIn
                             </a>
@@ -41,7 +41,7 @@ function Links() {
                                 href="https://codepen.io/raineyf"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-blue-lighter underline"
+                                className="text-blue-light underline"
                             >
                                 CodePen
                             </a>{" "}
