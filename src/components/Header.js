@@ -1,21 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../images/RF_Blue-BG.svg";
+import HeaderNavLink from "./HeaderNavLink";
 
 function Header() {
+    const menuButton = useRef(null);
+    const headerNav = useRef(null);
     const [navState, setNavState] = useState({
         ariaExpanded: "false",
         focusIndex: undefined,
     });
     useEffect(() => {
-        const headerNav = document.querySelector("#header-navigation");
-        const navLinks = headerNav.querySelectorAll("a");
+        const navLinks = [];
+        headerNav.current.childNodes.forEach((node) => {
+            navLinks.push(node.childNodes[0]);
+        });
         if (navState.ariaExpanded === "true") {
             if (navState.focusIndex !== undefined) {
                 navLinks[navState.focusIndex].focus();
             }
         }
     });
+
+    // object for header nav links
+    const headerNavLinks = [
+        {
+            name: "Home",
+            to: "/",
+        },
+        {
+            name: "About",
+            to: "/about",
+        },
+        {
+            name: "Links",
+            to: "/links",
+        },
+    ];
+    // ^^ object for header nav links
+
+    // functions to control menu
     const displayMenu = (index) => {
         setNavState({
             ariaExpanded: "true",
@@ -27,7 +50,7 @@ function Header() {
             ariaExpanded: "false",
             focusIndex: undefined,
         });
-        document.querySelector("#menu-button").focus();
+        menuButton.current.focus();
     };
     const toggleMenu = (index) => {
         if (navState.ariaExpanded === "false") {
@@ -36,6 +59,9 @@ function Header() {
             hideMenu();
         }
     };
+    // ^^ functions to control menu
+
+    // functions to handle interactions
     const handleHover = () => {
         displayMenu();
     };
@@ -43,8 +69,10 @@ function Header() {
         toggleMenu();
     };
     const handleButtonKeyDown = (e) => {
-        const headerNav = document.querySelector("#header-navigation");
-        const navLinks = headerNav.querySelectorAll("a");
+        const navLinks = [];
+        headerNav.current.childNodes.forEach((node) => {
+            navLinks.push(node.childNodes[0]);
+        });
         const navLength = navLinks.length;
         const lastNavIndex = navLength - 1;
         if (
@@ -59,19 +87,14 @@ function Header() {
         }
     };
     const handleLinkKeyDown = (e) => {
-        const headerNav = document.querySelector("#header-navigation");
-        const navLinks = headerNav.querySelectorAll("a");
-        const navLinksArr = () => {
-            let array = [];
-            navLinks.forEach((l) => {
-                array.push(l);
-            });
-            return array;
-        };
+        const navLinks = [];
+        headerNav.current.childNodes.forEach((node) => {
+            navLinks.push(node.childNodes[0]);
+        });
         const navLength = navLinks.length;
         const lastNavIndex = navLength - 1;
         const target = e.target;
-        const targetIndex = navLinksArr().indexOf(target);
+        const targetIndex = navLinks.indexOf(target);
         if (e.code === "ArrowDown") {
             e.preventDefault();
             if (targetIndex === lastNavIndex) {
@@ -95,6 +118,7 @@ function Header() {
             hideMenu();
         }
     };
+    // ^^ functions to handle interactions
     return (
         <header className="bg-blue border-b border-white fixed w-full font-montserrat">
             <div className="max-w-5xl container flex items-center justify-between h-16 relative">
@@ -102,6 +126,7 @@ function Header() {
                     <img src={logo} alt="RF Logo" />
                 </div>
                 <button
+                    ref={menuButton}
                     onMouseEnter={handleHover}
                     onClick={handleClick}
                     onKeyDown={handleButtonKeyDown}
@@ -122,47 +147,20 @@ function Header() {
                     }
                 >
                     <ul
+                        ref={headerNav}
                         id="header-navigation"
                         role="menu"
                         aria-labelledby="menu-button"
                     >
-                        <li role="none">
-                            <Link
-                                to="/"
+                        {headerNavLinks.map((headerNavLink, index) => (
+                            <HeaderNavLink
+                                key={index}
+                                name={headerNavLink.name}
+                                to={headerNavLink.to}
                                 onClick={handleClick}
                                 onKeyDown={handleLinkKeyDown}
-                                className="block flex justify-center items-center h-16 border border-white bg-blue-light hover:bg-blue hover:text-4xl focus:bg-blue focus:text-4xl"
-                                tabIndex="-1"
-                                role="menuitem"
-                            >
-                                Home
-                            </Link>
-                        </li>
-                        <li role="none">
-                            <Link
-                                to="/about"
-                                onClick={handleClick}
-                                onKeyDown={handleLinkKeyDown}
-                                className="block flex justify-center items-center h-16 border border-white bg-blue-light hover:bg-blue hover:text-4xl focus:bg-blue focus:text-4xl"
-                                tabIndex="-1"
-                                role="menuitem"
-                            >
-                                About
-                            </Link>
-                        </li>
-
-                        <li role="none">
-                            <Link
-                                to="/links"
-                                onClick={handleClick}
-                                onKeyDown={handleLinkKeyDown}
-                                className="block flex justify-center items-center h-16 border border-white bg-blue-light hover:bg-blue hover:text-4xl focus:bg-blue focus:text-4xl"
-                                tabIndex="-1"
-                                role="menuitem"
-                            >
-                                Links
-                            </Link>
-                        </li>
+                            />
+                        ))}
                     </ul>
                 </nav>
             </div>
